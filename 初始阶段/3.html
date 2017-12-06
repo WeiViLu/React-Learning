@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this.props.childrens</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type='text/babel'>
+        // this.props 对象的属性与组件的属性一一对应，但是有一个例外，就是 this.props.children 属性。它表示组件的所有子节点
+        //this.props.children 的值有三种可能：如果当前组件没有子节点，它就是 undefined ;如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array 。所以，处理 this.props.children 的时候要小心。
+        var NoteList = React.createClass({
+            render:function(){
+                return (
+                    <ol>
+                    {
+                        React.Children.map(this.props.children, function(child){
+                            return  <li>{child}</li>
+                        })
+                    }
+                    </ol>
+                )
+            }
+        });
+
+        ReactDOM.render(
+            <NoteList>
+                <span>冰淇淋</span>
+                <span>巧克力</span>
+            </NoteList>
+            ,document.body)
+    </script>
+</body>
+</html>
