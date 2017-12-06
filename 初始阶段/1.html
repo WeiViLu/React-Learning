@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React创建组件的三种方式</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+
+    // 无状态函数式组件
+        // function HelloComponent(props){ 
+        //     return <div>Hello {props.name}</div>
+        // } ReactDOM.render(
+        // <HelloComponent name='World' />,document.getElementById('container'));
+
+    //React.createClass
+        // var Hello=React.createClass({
+        //     render:function(){
+        //         return <div>Hello {this.props.title}.{this.props.name}</div>
+        //     }
+        // })
+
+        // ReactDOM.render(<Hello name='Lu' title='Miss'/>,document.getElementById('container'));
+    
+    //React.component
+        class Hello extends React.Component{
+            render(){
+                return <div>Hello {this.props.name}</div>
+            }
+        }
+
+        ReactDOM.render(<Hello name='6vv'/>,document.getElementById('container'));
+    </script>
+</body>
+
+</html>
