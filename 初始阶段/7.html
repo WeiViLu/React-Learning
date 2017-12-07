@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type='text/babel'>
+        var Input=React.createClass({
+            getInitialState:function(){
+                return {value:'Hello'}
+            },
+            handleChange:function(event){
+                this.setState({value:event.target.value});
+            },
+            render:function(){
+                var value=this.state.value
+                return(
+                    <div>
+                        <input type='text' value={value} onChange={this.handleChange} />
+                        <p>{value}</p>
+                    </div>
+                )
+            }
+        })
+
+        ReactDOM.render(<Input />,document.getElementById('example'))
+    </script>
+</body>
+</html>
