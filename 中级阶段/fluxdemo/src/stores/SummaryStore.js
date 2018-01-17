@@ -22,7 +22,6 @@ const SummaryStore=Object.assign({},EventEmitter.prototype,{
 
     emitChange:function(){
         this.emit(CHANGE_EVENT);
-        console.log('summarychange');
     },
 
     addChangeListener:function(callback){
