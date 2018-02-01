@@ -3,7 +3,7 @@ var router = require('koa-router')();
 
 //首页--广告（超值优惠）
 var homeAdData = require('./home/ad.js')
-router.get('',function *(next) {
+router.get('/api/homead',function *(next) {
     this.body = homeAdData
 })
 
