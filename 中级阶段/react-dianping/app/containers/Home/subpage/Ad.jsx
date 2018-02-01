@@ -23,14 +23,18 @@ class Ad extends React.Component {
                     data:data
                 });
             }
-            console.log(json);
         })
     }
 
     render() {
         return (
            <div>
-               <HomeAd data={this.state.data}/>
+               {
+                   this.state.data.length
+                   ? <HomeAd data={this.state.data}/>
+                   : <div>加载中...</div>
+               }
+               
            </div>
         )
     }
