@@ -15,8 +15,8 @@ router.get('/api/homelist/:city/:page', function *(next) {
     const paramsCity = params.city
     const paramsPage = params.page
 
-    // console.log('当前城市：' + paramsCity)
-    // console.log('当前页数：' + paramsPage)
+    console.log('当前城市：' + paramsCity)
+    console.log('当前页数：' + paramsPage)
 
     this.body = homeListData
 });
@@ -53,6 +53,32 @@ router.get('/api/search/:page/:city/:category', function *(next) {
     this.body = searchListData
 })
 
+//详情页--商户信息
+var detailInfo = require('./detail/info.js');
+router.get('/api/detail/info/:id',function *(next){
+    //参数
+    const params = this.params
+    const id = params.id
+
+    console.log('商户id:'+id);
+
+    this.body = detailInfo;
+    
+})
+
+//详情页--评论信息
+var detailComment = require('./detail/comment.js');
+router.get('/api/detail/comment/:page/:id',function *(next){
+    //参数
+    const params = this.params
+    const page = params.page
+    const id = params.id
+
+    console.log('当前页:'+page);
+    console.log('商户id:'+id);
+
+    this.body = detailComment;
+})
 
 //开始服务并生成路由
 app.use(router.routes())

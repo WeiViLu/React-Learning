@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import {Link} from 'react-router'
 
 import './style.less'
 
@@ -13,22 +14,24 @@ class Item extends React.Component {
         const data=this.props.item
         return (
            <div className="list-item clear-fix">
-                <div className="item-img-container float-left">
-                  <img src={data.img} alt={data.title}/>
-                </div>
-                <div className="item-content">
-                    <div className="item-title-container clear-fix">
-                        <h3 className="float-left">{data.title}</h3>
-                        <h3 className="float-right">{data.distance}</h3>
+                <Link to={'/detail/'+ data.id}>
+                    <div className="item-img-container float-left">
+                    <img src={data.img} alt={data.title}/>
                     </div>
-                    <p className="item-sub-title">
-                        {data.subTitle}
-                    </p>
-                    <div className="item-price-container clear-fix">
-                        <span className="price float-left">￥{data.price}</span>
-                        <span className="number float-right">已售{data.number}</span>
+                    <div className="item-content">
+                        <div className="item-title-container clear-fix">
+                            <h3 className="float-left">{data.title}</h3>
+                            <h3 className="float-right">{data.distance}</h3>
+                        </div>
+                        <p className="item-sub-title">
+                            {data.subTitle}
+                        </p>
+                        <div className="item-price-container clear-fix">
+                            <span className="price float-left">￥{data.price}</span>
+                            <span className="number float-right">已售{data.number}</span>
+                        </div>
                     </div>
-                </div>
+                </Link>
            </div>
         )
     }
