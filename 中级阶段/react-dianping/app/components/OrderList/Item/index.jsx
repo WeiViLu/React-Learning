@@ -30,8 +30,24 @@ class Item extends React.Component {
         })
     }
     //提交按钮
-    submitComment(){
+    submitCommentHandler(){
+        const submitComment = this.props.submitComment;
+        const id = this.props.data.id;
+        const commentText = this.refs.commentText;
+        const value = commentText.value.trim();
 
+        if(!value){
+            return;
+        }
+
+        submitComment(id,value,this.commentOk.bind(this));
+        
+    }
+
+    commentOk(){
+        this.setState({
+            commentState: 2
+        })
     }
 
     render() {
@@ -61,7 +77,7 @@ class Item extends React.Component {
                     this.state.commentState === 1
                     ? <div className="comment-text-container">
                         <textarea style={{width: '100%', height: '80px'}} className="comment-text" ref="commentText"></textarea>
-                        <button className="btn" onClick={this.submitComment.bind(this)}>提交</button>
+                        <button className="btn" onClick={this.submitCommentHandler.bind(this)}>提交</button>
                         &nbsp;
                         <button className="btn unselected-btn" onClick={this.hideComment.bind(this)}>取消</button>
                     </div>
